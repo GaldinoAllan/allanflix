@@ -15,13 +15,14 @@ export default createGlobalStyle`
 
   :root {
     --primary: #ff2d55;
-    --black: #000000;
+    --black: #1A1A1A;
     --blackLighter: #9e9e9e;
     --grayLighter: #f5f5f5;
     --grayMedium: #e5e5e5;
     --white: #ffffff;
     --frontEnd: #6bd1ff;
     --backEnd: #00c86f;
+    --mobile: #ffba05;
   }
 
   html,body {

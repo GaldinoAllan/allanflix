@@ -7,7 +7,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const ButtonLink: React.FC<ButtonProps> = ({ goto, children }: ButtonProps) => (
-  <Button href={goto}>{children}</Button>
+  <Button to={goto}>{children}</Button>
 );
 
 export default ButtonLink;

@@ -34,4 +34,10 @@ export default createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 `;

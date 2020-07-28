@@ -1,30 +1,27 @@
 import styled from 'styled-components';
 
-export const Header = styled.div`
-  nav {
-    width: 100%;
-    height: 94px;
-    z-index: 100;
+export const Content = styled.div`
+  height: 94px;
+`;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+export const HeaderContainer = styled.nav`
+  z-index: 100;
+  width: 100%;
+  height: 94px;
 
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding-left: 5%;
-    padding-right: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    background: var(--black);
-    border-bottom: 2px solid var(--primary);
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-left: 5%;
+  padding-right: 5%;
 
-  body {
-    --bodyPaddingTop: 94px;
-    padding-top: var(--bodyPaddingTop);
-  }
+  background: var(--black);
+  border-bottom: 2px solid var(--primary);
 
   img {
     max-width: 168px;
@@ -35,14 +32,9 @@ export const Header = styled.div`
       max-width: 105px;
     }
 
-    nav {
+    & {
       height: 40px;
       justify-content: center;
-    }
-
-    body {
-      --bodyPaddingTop: 90px;
-      padding-top: var(--bodyPaddingTop);
     }
 
     > a {

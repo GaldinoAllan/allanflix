@@ -5,7 +5,7 @@ import {
   ContentAreaContainer,
   ContentAreaContainerItem,
   ContentAreaContainerTitle,
-  ContentAreaContainerCategory,
+  // ContentAreaContainerCategory,
   ContentAreaContainerDescription,
   WatchButton,
 } from './styles';

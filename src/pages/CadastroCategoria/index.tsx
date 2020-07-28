@@ -9,7 +9,15 @@ const CadastroCategoria: React.FC = () => (
   <PageDefault>
     <Container>
       <h1>Cadastro de Categoria</h1>
-      <Link to="/">Go to Home</Link>
+      <form>
+        <label>
+          Nome da Categoria:
+          <input type="text" />
+        </label>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+      <Link to="/">Ir para home</Link>
     </Container>
   </PageDefault>
 );

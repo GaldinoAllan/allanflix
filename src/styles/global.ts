@@ -10,7 +10,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #1A1A1A;
+    background: #141414;
   }
 
   :root {

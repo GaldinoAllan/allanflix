@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Content = styled.div`
   height: 94px;
+
+  @media (max-width: 800px) {
+    height: 50px;
+  }
 `;
 
 export const HeaderContainer = styled.nav`
@@ -23,6 +28,13 @@ export const HeaderContainer = styled.nav`
   background: var(--black);
   border-bottom: 2px solid var(--primary);
 
+  @media (max-width: 800px) {
+    height: 50px;
+    justify-content: center;
+  }
+`;
+
+export const LinkHome = styled(Link)`
   img {
     max-width: 168px;
   }
@@ -31,28 +43,13 @@ export const HeaderContainer = styled.nav`
     img {
       max-width: 105px;
     }
-
-    & {
-      height: 40px;
-      justify-content: center;
-    }
-
-    > a {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--primary);
-      border-radius: 0;
-      border: 0;
-      text-align: center;
-    }
   }
 `;
 
 export const Button = styled.div`
   border: 1px solid var(--white);
   border-radius: 5px;
+  color: var(--white);
 
   @media (max-width: 800px) {
     border: none;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Button = styled(Link)`
-  color: var(--white);
   box-sizing: border-box;
   cursor: pointer;
   padding: 16px 24px;

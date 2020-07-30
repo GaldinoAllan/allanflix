@@ -1,7 +1,8 @@
 import React from 'react';
-import { Content, HeaderContainer, LinkHome, Button } from './styles';
+import { Link } from 'react-router-dom';
+import { Content, HeaderContainer, LinkHome, ButtonMobile } from './styles';
 import logo from '../../assets/allanflix.png';
-import ButtonLink from '../ButtonLink';
+import Button from '../Button';
 
 const Header: React.FC = () => (
   <Content>
@@ -10,9 +11,11 @@ const Header: React.FC = () => (
         <img src={logo} alt="allanflix" />
       </LinkHome>
 
-      <Button>
-        <ButtonLink goto="cadastro/video">Novo vídeo</ButtonLink>
-      </Button>
+      <ButtonMobile>
+        <Button>
+          <Link to="cadastro/video">Novo vídeo</Link>
+        </Button>
+      </ButtonMobile>
     </HeaderContainer>
   </Content>
 );

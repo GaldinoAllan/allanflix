@@ -13,6 +13,10 @@ export default createGlobalStyle`
     background: #141414;
   }
 
+  button{
+    cursor: pointer;
+  }
+
   :root {
     --primary: #ff2d55;
     --black: #1a1a1a;

@@ -1,17 +1,18 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
 import {
   Container,
-  Button,
   Image,
   ThornImage,
   CactusImage,
   Text,
+  ButtonMobile,
 } from './styles';
 
 import cactus from '../../assets/404.svg';
 import thorn from '../../assets/thorn.svg';
-import ButtonLink from '../../components/ButtonLink';
+import Button from '../../components/Button';
 
 const NotFound: React.FC = () => (
   <Container>
@@ -21,9 +22,11 @@ const NotFound: React.FC = () => (
     </Image>
     <Text>
       <p>You look like a little lost</p>
-      <Button>
-        <ButtonLink goto="/">Take me Home</ButtonLink>
-      </Button>
+      <ButtonMobile>
+        <Button>
+          <Link to="/">Go Home</Link>
+        </Button>
+      </ButtonMobile>
     </Text>
   </Container>
 );

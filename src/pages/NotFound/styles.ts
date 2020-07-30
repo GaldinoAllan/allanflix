@@ -52,21 +52,15 @@ export const Text = styled.div`
   }
 `;
 
-export const Button = styled.div`
-  border: 1px solid rgb(34, 181, 88);
-  border-radius: 5px;
-  margin: 8px;
-
+export const ButtonMobile = styled.div`
   @media (max-width: 800px) {
-    color: #000;
-    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(255, 165, 0);
-    border-radius: 0;
-    border: 0;
-    text-align: center;
   }
 `;

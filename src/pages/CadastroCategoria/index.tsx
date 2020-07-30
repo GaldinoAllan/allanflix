@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../components/PageDefault';
 import Input from '../../components/Input';
 
-import { Container } from './styles';
+import { Container, Title, Form } from './styles';
 
 interface Categoria {
   nome: string;
@@ -55,8 +55,8 @@ const CadastroCategoria: React.FC = () => {
   return (
     <PageDefault>
       <Container>
-        <h1>Cadastro de Categoria</h1>
-        <form onSubmit={e => handleSubmit(e)}>
+        <Title>Nova Categoria</Title>
+        <Form onSubmit={e => handleSubmit(e)}>
           <Input
             label="Nome da Categoria"
             type="text"
@@ -67,7 +67,7 @@ const CadastroCategoria: React.FC = () => {
 
           <Input
             label="Descrição"
-            type="text"
+            type="textarea"
             name="descricao"
             value={values.descricao}
             onChange={handleChange}
@@ -81,8 +81,8 @@ const CadastroCategoria: React.FC = () => {
             onChange={handleChange}
           />
 
-          <button>Cadastrar</button>
-        </form>
+          <button type="submit">Cadastrar</button>
+        </Form>
 
         <ul>
           {categorias.map(categoria => (

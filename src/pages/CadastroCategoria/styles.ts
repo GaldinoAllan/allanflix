@@ -7,3 +7,11 @@ export const Container = styled.div`
   padding-left: 5%;
   padding-right: 5%;
 `;
+
+export const Form = styled.form``;
+
+export const Title = styled.h1``;
+
+export const ButtonContainer = styled.div``;
+
+export const Button = styled.button``;

@@ -36,6 +36,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
     "react/require-default-props": "off",
+    "react/jsx-indent": "off",
     "react/jsx-filename-extension": [
       1,
       {

@@ -1,12 +1,16 @@
 import React from 'react';
-import { InputText } from './styles';
+import { InputText, TextArea } from './styles';
 
 interface InputProps {
   label: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
+  ) => void;
   value: string;
   name: string;
-  type: 'text' | 'color';
+  type: 'text' | 'color' | 'textarea';
 }
 
 const Input: React.FC<InputProps> = ({
@@ -17,9 +21,13 @@ const Input: React.FC<InputProps> = ({
   value,
 }: InputProps) => {
   return (
-    <label htmlFor="Input">
+    <label htmlFor="textarea">
       <span>{`${label}: `}</span>
-      <InputText name={name} type={type} onChange={onChange} value={value} />
+      {type === 'textarea' ? (
+        <TextArea name={name} onChange={onChange} value={value} />
+      ) : (
+          <InputText name={name} type={type} onChange={onChange} value={value} />
+        )}
     </label>
   );
 };

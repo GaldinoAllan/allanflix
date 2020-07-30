@@ -1,10 +1,11 @@
 import React from 'react';
-import { InputText } from './styles';
+import { FormFieldWrapper, InputText, Label, LabelText } from './styles';
 
 interface InputProps {
   as?: string;
   label: string;
   value: string;
+  hasValue?: boolean;
   name: string;
   type?: 'text' | 'color' | 'textarea';
   onChange?: (
@@ -26,22 +27,26 @@ const Input: React.FC<InputProps> = ({
 
   const isTextArea = asType === 'textarea';
   const tag = isTextArea ? 'textarea' : 'input';
-
   const isColor = type === 'color';
   const isType = isColor ? 'color' : 'text';
 
+  const hasValue = Boolean(value.length);
+
   return (
-    <label htmlFor={fieldId}>
-      <span>{`${label}: `}</span>
-      <InputText
-        as={tag}
-        id={fieldId}
-        name={name}
-        type={isType}
-        value={value}
-        onChange={onChange}
-      />
-    </label>
+    <FormFieldWrapper>
+      <Label htmlFor={fieldId}>
+        <InputText
+          as={tag}
+          id={fieldId}
+          name={name}
+          type={isType}
+          value={value}
+          hasValue={hasValue}
+          onChange={onChange}
+        />
+        <LabelText>{`${label}:`}</LabelText>
+      </Label>
+    </FormFieldWrapper>
   );
 };
 

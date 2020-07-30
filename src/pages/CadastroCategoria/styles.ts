@@ -14,31 +14,13 @@ export const Form = styled.form`
   flex-direction: column;
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  margin-bottom: 32px;
+`;
 
 export const ButtonContainer = styled.div``;
 
-export const Button = styled.button`
-  border: 1px solid var(--white);
-  width: 120px;
-  background: var(--black);
-  border-radius: 5px;
-  color: var(--white);
-  box-sizing: border-box;
-  cursor: pointer;
-  padding: 16px 24px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  outline: none;
-  border-radius: 5px;
-  text-decoration: none;
+export const ButtonStyle = styled.div`
   display: flex;
-  justify-content: center;
-  transition: opacity 0.3s;
-
-  &:hover,
-  &:focus {
-    opacity: 0.5;
-  }
+  max-width: 300px;
 `;

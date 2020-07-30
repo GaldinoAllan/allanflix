@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 import PageDefault from '../../components/PageDefault';
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 
-import { Container, Title, Form, Button } from './styles';
+import { Container, Title, Form, ButtonStyle } from './styles';
 
 interface Categoria {
   nome: string;
@@ -81,8 +82,10 @@ const CadastroCategoria: React.FC = () => {
             value={values.cor}
             onChange={handleChange}
           />
-
-          <Button type="submit">Cadastrar</Button>
+          <ButtonStyle>
+            <Button>Cadastrar</Button>
+            <Button>Limpar</Button>
+          </ButtonStyle>
         </Form>
 
         <ul>

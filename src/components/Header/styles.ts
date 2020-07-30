@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Content = styled.div`
-  height: 94px;
+  height: 70px;
 
   @media (max-width: 800px) {
     height: 50px;
@@ -55,6 +55,6 @@ export const ButtonMobile = styled.div`
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 150px;
   }
 `;

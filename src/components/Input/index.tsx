@@ -1,33 +1,46 @@
 import React from 'react';
-import { InputText, TextArea } from './styles';
+import { InputText } from './styles';
 
 interface InputProps {
+  as?: string;
   label: string;
+  value: string;
+  name: string;
+  type?: 'text' | 'color' | 'textarea';
   onChange?: (
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
-  value: string;
-  name: string;
-  type: 'text' | 'color' | 'textarea';
 }
 
 const Input: React.FC<InputProps> = ({
+  as: asType,
   label,
   name,
   onChange,
   type,
   value,
 }: InputProps) => {
+  const fieldId = `id_${name}`;
+
+  const isTextArea = asType === 'textarea';
+  const tag = isTextArea ? 'textarea' : 'input';
+
+  const isColor = type === 'color';
+  const isType = isColor ? 'color' : 'text';
+
   return (
-    <label htmlFor="textarea">
+    <label htmlFor={fieldId}>
       <span>{`${label}: `}</span>
-      {type === 'textarea' ? (
-        <TextArea name={name} onChange={onChange} value={value} />
-      ) : (
-          <InputText name={name} type={type} onChange={onChange} value={value} />
-        )}
+      <InputText
+        as={tag}
+        id={fieldId}
+        name={name}
+        type={isType}
+        value={value}
+        onChange={onChange}
+      />
     </label>
   );
 };

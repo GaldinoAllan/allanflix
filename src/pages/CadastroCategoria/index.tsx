@@ -1,13 +1,16 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import PageDefault from '../../components/PageDefault';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import api from '../../service/api';
+
 import { Container, Title, Form, ButtonStyle } from './styles';
 
 interface Categoria {
+  id: number;
   nome: string;
   descricao: string;
   cor: string;
@@ -15,6 +18,7 @@ interface Categoria {
 
 const CadastroCategoria: React.FC = () => {
   const valoresIniciais = {
+    id: 0,
     nome: '',
     descricao: '',
     cor: '',
@@ -31,6 +35,12 @@ const CadastroCategoria: React.FC = () => {
       }),
     [values],
   );
+
+  useEffect(() => {
+    api.get('categorias').then(response => {
+      setCategorias(response.data);
+    });
+  }, []);
 
   const handleSubmit = useCallback(
     e => {
@@ -88,9 +98,11 @@ const CadastroCategoria: React.FC = () => {
           </ButtonStyle>
         </Form>
 
+        {categorias.length === 0 && <div>Loading...</div>}
+
         <ul>
           {categorias.map(categoria => (
-            <li key={categoria.nome}>{categoria.nome}</li>
+            <li key={categoria.id}>{categoria.nome}</li>
           ))}
         </ul>
 

@@ -11,6 +11,12 @@
       "nome": "Back End",
       "descricao": "Outra categoria legal",
       "cor": "#7159c1"
+    },
+    {
+      "id": 3,
+      "nome": "Mobile",
+      "descricao": "Mais uma categoria legal",
+      "cor": "#7159c1"
     }
   ]
 }

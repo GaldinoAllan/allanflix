@@ -5,62 +5,50 @@ import PageDefault from '../../components/PageDefault';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import useForm from '../../Hooks/useForm';
+
 import api from '../../service/api';
 
 import { Container, Title, Form, ButtonStyle } from './styles';
 
 interface Categoria {
   id: number;
-  nome: string;
+  titulo: string;
   descricao: string;
   cor: string;
 }
 
 const CadastroCategoria: React.FC = () => {
-  const valoresIniciais = {
+  const valoresIniciais: Categoria = {
     id: 0,
-    nome: '',
+    titulo: '',
     descricao: '',
     cor: '',
   };
 
-  const [categorias, setCategorias] = useState<Categoria[]>([]);
-  const [values, setValues] = useState<Categoria>(valoresIniciais);
+  const { values, handleChange, clearForm } = useForm(valoresIniciais);
 
-  const setValue = useCallback(
-    (key, value) =>
-      setValues({
-        ...values,
-        [key]: value,
-      }),
-    [values],
-  );
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
 
   useEffect(() => {
     api.get('categorias').then(response => {
       setCategorias(response.data);
     });
-  }, []);
+  }, [setCategorias]);
 
   const handleSubmit = useCallback(
-    e => {
+    async e => {
       e.preventDefault();
 
-      if (values.nome === '' || values.descricao === '') {
+      if (values.titulo === '' || values.descricao === '') {
         return;
       }
 
       setCategorias([...categorias, values]);
-      setValues(valoresIniciais);
+      await api.post('categorias', values);
+      clearForm();
     },
     [categorias, valoresIniciais, values],
-  );
-
-  const handleChange = useCallback(
-    e => {
-      setValue(e.target.getAttribute('name'), e.target.value);
-    },
-    [setValue],
   );
 
   return (
@@ -72,7 +60,7 @@ const CadastroCategoria: React.FC = () => {
             label="Nome da Categoria"
             type="text"
             name="nome"
-            value={values.nome}
+            value={values.titulo}
             onChange={e => handleChange(e)}
           />
 
@@ -93,7 +81,7 @@ const CadastroCategoria: React.FC = () => {
             onChange={handleChange}
           />
           <ButtonStyle>
-            <Button>Cadastrar</Button>
+            <Button type="submit">Cadastrar</Button>
             <Button>Limpar</Button>
           </ButtonStyle>
         </Form>
@@ -102,7 +90,7 @@ const CadastroCategoria: React.FC = () => {
 
         <ul>
           {categorias.map(categoria => (
-            <li key={categoria.id}>{categoria.nome}</li>
+            <li key={categoria.id}>{categoria.titulo}</li>
           ))}
         </ul>
 

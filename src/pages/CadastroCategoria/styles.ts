@@ -18,7 +18,7 @@ export const Title = styled.h1`
   margin-bottom: 32px;
 `;
 
-export const ButtonContainer = styled.div``;
+export const ButtonContainer = styled.button``;
 
 export const ButtonStyle = styled.div`
   display: flex;

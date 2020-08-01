@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import dadosIniciais from '../../data/dados_iniciais.json';
 
 import PageDefault from '../../components/PageDefault';
 import BannerMain from '../../components/BannerMain';
 import Carousel from '../../components/Carousel';
 
+import { Loading } from './styles';
+
 import api from '../../service/api';
 
 interface Videos {
   titulo: string;
-  url: string;
-}
-
-interface LinkExtra {
-  text: string;
+  descricao: string;
   url: string;
 }
 
@@ -21,36 +18,45 @@ interface CategoryData {
   id: number;
   titulo: string;
   link?: string | undefined;
+  descricao: string;
   cor: string;
-  link_extra?: LinkExtra;
   videos: Videos[];
 }
 
 const Home: React.FC = () => {
-  const [categorias, setCategorias] = useState<CategoryData[]>([]);
+  const [dadosIniciais, setDadosIniciais] = useState<CategoryData[]>([]);
 
   useEffect(() => {
     api.get('categorias?_embed=videos').then(response => {
-      setCategorias(response.data);
+      try {
+        setDadosIniciais(response.data);
+      } catch (err) {
+        console.log(err.message);
+        throw new Error('Não foi possível pegar os dados!');
+      }
     });
   }, []);
 
   return (
     <PageDefault>
-      <BannerMain
-        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-        url={dadosIniciais.categorias[0].videos[0].url}
-        videoDescription="O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!"
-      />
+      {dadosIniciais.length === 0 && <Loading>Loading...</Loading>}
 
-      {categorias.map(categoria => {
-        if (categoria.id === 0) {
+      {dadosIniciais.map((categoria, index) => {
+        if (index === 0) {
           return (
-            <Carousel
-              ignoreFirstVideo
-              key={categoria.id}
-              category={categoria}
-            />
+            <>
+              <BannerMain
+                videoTitle={categoria.videos[0].titulo}
+                url={categoria.videos[0].url}
+                videoDescription={categoria.videos[0].descricao}
+              />
+
+              <Carousel
+                ignoreFirstVideo
+                key={categoria.id}
+                category={categoria}
+              />
+            </>
           );
         }
 

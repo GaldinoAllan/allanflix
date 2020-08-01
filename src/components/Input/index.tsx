@@ -32,6 +32,8 @@ const Input: React.FC<InputProps> = ({
 
   const hasValue = Boolean(value.length);
 
+  console.log(asType, label, name, onChange, type, value);
+
   return (
     <FormFieldWrapper>
       <Label htmlFor={fieldId}>

@@ -38,7 +38,7 @@ function useForm(valoresIniciais: Categoria): Cadastro {
 
   const clearForm = useCallback(() => {
     setValues(valoresIniciais);
-  }, [setValues]);
+  }, [setValues, valoresIniciais]);
 
   return {
     values,

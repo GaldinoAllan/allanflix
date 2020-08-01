@@ -48,7 +48,7 @@ const CadastroCategoria: React.FC = () => {
       await api.post('categorias', values);
       clearForm();
     },
-    [categorias, valoresIniciais, values],
+    [clearForm, categorias, values],
   );
 
   return (
@@ -57,9 +57,9 @@ const CadastroCategoria: React.FC = () => {
         <Title>Nova Categoria</Title>
         <Form onSubmit={e => handleSubmit(e)}>
           <Input
-            label="Nome da Categoria"
+            label="Título da Categoria"
             type="text"
-            name="nome"
+            name="titulo"
             value={values.titulo}
             onChange={e => handleChange(e)}
           />
@@ -82,7 +82,7 @@ const CadastroCategoria: React.FC = () => {
           />
           <ButtonStyle>
             <Button type="submit">Cadastrar</Button>
-            <Button>Limpar</Button>
+            <Button onClick={clearForm}>Limpar</Button>
           </ButtonStyle>
         </Form>
 

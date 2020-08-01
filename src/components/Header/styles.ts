@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Content = styled.div`
-  height: 70px;
+  height: 94px;
 
   @media (max-width: 800px) {
     height: 50px;

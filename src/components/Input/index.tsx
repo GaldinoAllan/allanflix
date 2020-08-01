@@ -7,6 +7,8 @@ interface InputProps {
   value: string;
   hasValue?: boolean;
   name: string;
+  suggestions?: Array<string>;
+  list?: string;
   type?: 'text' | 'color' | 'textarea';
   onChange?: (
     event:
@@ -22,6 +24,7 @@ const Input: React.FC<InputProps> = ({
   onChange,
   type,
   value,
+  suggestions,
 }: InputProps) => {
   const fieldId = `id_${name}`;
 
@@ -31,8 +34,6 @@ const Input: React.FC<InputProps> = ({
   const isType = isColor ? 'color' : 'text';
 
   const hasValue = Boolean(value.length);
-
-  console.log(asType, label, name, onChange, type, value);
 
   return (
     <FormFieldWrapper>
@@ -45,8 +46,23 @@ const Input: React.FC<InputProps> = ({
           value={value}
           hasValue={hasValue}
           onChange={onChange}
+          autoComplete={suggestions ? 'off' : 'on'}
+          list={suggestions ? `suggestionFor_${fieldId}` : undefined}
         />
         <LabelText>{`${label}:`}</LabelText>
+
+        {suggestions && (
+          <datalist id={`suggestionFor_${fieldId}`}>
+            {suggestions.map(suggestion => (
+              <option
+                key={`suggestionFor_${fieldId}_option${suggestion}`}
+                value={suggestion}
+              >
+                {suggestion}
+              </option>
+            ))}
+          </datalist>
+        )}
       </Label>
     </FormFieldWrapper>
   );

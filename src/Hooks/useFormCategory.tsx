@@ -17,7 +17,7 @@ interface Cadastro {
   ) => void;
 }
 
-function useForm(valoresIniciais: Categoria): Cadastro {
+function useFormCategory(valoresIniciais: Categoria): Cadastro {
   const [values, setValues] = useState<Categoria>(valoresIniciais);
 
   const setValue = useCallback(
@@ -47,4 +47,4 @@ function useForm(valoresIniciais: Categoria): Cadastro {
   };
 }
 
-export default useForm;
+export default useFormCategory;

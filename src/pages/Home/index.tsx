@@ -46,6 +46,7 @@ const Home: React.FC = () => {
           return (
             <>
               <BannerMain
+                key={categoria.id}
                 videoTitle={categoria.videos[0].titulo}
                 url={categoria.videos[0].url}
                 videoDescription={categoria.videos[0].descricao}

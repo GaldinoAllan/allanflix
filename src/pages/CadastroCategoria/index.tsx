@@ -5,7 +5,7 @@ import PageDefault from '../../components/PageDefault';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import useForm from '../../Hooks/useForm';
+import useFormCategory from '../../Hooks/useFormCategory';
 
 import api from '../../service/api';
 
@@ -26,7 +26,7 @@ const CadastroCategoria: React.FC = () => {
     cor: '',
   };
 
-  const { values, handleChange, clearForm } = useForm(valoresIniciais);
+  const { values, handleChange, clearForm } = useFormCategory(valoresIniciais);
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
 
@@ -46,9 +46,8 @@ const CadastroCategoria: React.FC = () => {
 
       setCategorias([...categorias, values]);
       await api.post('categorias', values);
-      clearForm();
     },
-    [clearForm, categorias, values],
+    [categorias, values],
   );
 
   return (

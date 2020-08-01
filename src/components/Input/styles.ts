@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 interface InputProps {
   hasValue?: boolean;
   type: string;
+  list?: string;
 }
 
 export const FormFieldWrapper = styled.div`
